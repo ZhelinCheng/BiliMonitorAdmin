@@ -2,7 +2,7 @@ import { LikeOutlined, MessageFilled, StarTwoTone } from '@ant-design/icons';
 import { useRequest } from '@umijs/max';
 import { List, Tag } from 'antd';
 import React from 'react';
-import type { ListItemDataType } from '../../data';
+import type { ListItemDataType } from '../../data.d';
 import { queryFakeList } from '../../service';
 import ArticleListContent from '../ArticleListContent';
 import useStyles from './index.style';

@@ -8,7 +8,7 @@ import { categoryOptions } from '../../mock';
 import ArticleListContent from './components/ArticleListContent';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
-import type { ListItemDataType } from './data';
+import type { ListItemDataType } from './data.d';
 import { queryFakeList } from './service';
 import useStyles from './style.style';
 

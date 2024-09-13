@@ -6,7 +6,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import type { FC } from 'react';
 import EditableLinkGroup from './components/EditableLinkGroup';
-import type { ActivitiesType, CurrentUser } from './data';
+import type { ActivitiesType, CurrentUser } from './data.d';
 import { fakeChartData, queryActivities, queryProjectNotice } from './service';
 import useStyles from './style.style';
 dayjs.extend(relativeTime);

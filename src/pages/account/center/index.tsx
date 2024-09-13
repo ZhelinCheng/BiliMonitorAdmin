@@ -7,7 +7,7 @@ import useStyles from './Center.style';
 import Applications from './components/Applications';
 import Articles from './components/Articles';
 import Projects from './components/Projects';
-import type { CurrentUser, tabKeyType, TagType } from './data';
+import type { CurrentUser, tabKeyType, TagType } from './data.d';
 import { queryCurrent } from './service';
 const operationTabList = [
   {

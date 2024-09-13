@@ -8,7 +8,7 @@ import { useRequest } from '@umijs/max';
 import { Avatar, Card, Dropdown, List, Tooltip } from 'antd';
 import numeral from 'numeral';
 import React from 'react';
-import type { ListItemDataType } from '../../data';
+import type { ListItemDataType } from '../../data.d';
 import { queryFakeList } from '../../service';
 import useStyles from './index.style';
 export function formatWan(val: number) {

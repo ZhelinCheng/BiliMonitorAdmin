@@ -24,7 +24,7 @@ import {
 import classNames from 'classnames';
 import type { FC } from 'react';
 import React, { Fragment, useState } from 'react';
-import type { AdvancedProfileData } from './data';
+import type { AdvancedProfileData } from './data.d';
 import { queryAdvancedProfile } from './service';
 import useStyles from './style.style';
 

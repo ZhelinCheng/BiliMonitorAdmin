@@ -7,7 +7,7 @@ import { categoryOptions } from '../../mock';
 import AvatarList from './components/AvatarList';
 import StandardFormRow from './components/StandardFormRow';
 import TagSelect from './components/TagSelect';
-import type { ListItemDataType } from './data';
+import type { ListItemDataType } from './data.d';
 import { queryFakeList } from './service';
 import useStyles from './style.style';
 

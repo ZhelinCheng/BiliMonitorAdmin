@@ -4,6 +4,7 @@ import { Col, Progress, Row, Tooltip } from 'antd';
 import numeral from 'numeral';
 import type { DataItem } from '../data';
 import useStyles from '../style.style';
+import Yuan from '../utils/Yuan';
 import { ChartCard, Field } from './Charts';
 import Trend from './Trend';
 const topColResponsiveProps = {
@@ -23,15 +24,15 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Dat
       <Col {...topColResponsiveProps}>
         <ChartCard
           bordered={false}
-          title="总下载量"
+          title="总销售额"
           action={
-            <Tooltip title="运行至今的下载总量">
+            <Tooltip title="指标说明">
               <InfoCircleOutlined />
             </Tooltip>
           }
           loading={loading}
-          total={numeral(8846).format('0,0')}
-          footer={<Field label="今日下载" value={numeral(789).format('0,0')} />}
+          total={() => <Yuan>126560</Yuan>}
+          footer={<Field label="日销售额" value={`￥${numeral(12423).format('0,0')}`} />}
           contentHeight={46}
         >
           <Trend
@@ -49,6 +50,7 @@ const IntroduceRow = ({ loading, visitData }: { loading: boolean; visitData: Dat
           </Trend>
         </ChartCard>
       </Col>
+
       <Col {...topColResponsiveProps}>
         <ChartCard
           bordered={false}

@@ -37,18 +37,17 @@ export default [
         path: '/user/register',
         component: './user/register',
       },
-      /* {
+      {
         component: '404',
-        path: '/*',
-      }, */
+        path: '/user/*',
+      },
     ],
   },
   {
     path: '/dashboard',
     name: 'dashboard',
     icon: 'dashboard',
-    component: './dashboard/analysis',
-    /* routes: [
+    routes: [
       {
         path: '/dashboard',
         redirect: '/dashboard/analysis',
@@ -58,8 +57,20 @@ export default [
         icon: 'smile',
         path: '/dashboard/analysis',
         component: './dashboard/analysis',
-      }
-    ], */
+      },
+      {
+        name: 'monitor',
+        icon: 'smile',
+        path: '/dashboard/monitor',
+        component: './dashboard/monitor',
+      },
+      {
+        name: 'workplace',
+        icon: 'smile',
+        path: '/dashboard/workplace',
+        component: './dashboard/workplace',
+      },
+    ],
   },
   {
     path: '/form',

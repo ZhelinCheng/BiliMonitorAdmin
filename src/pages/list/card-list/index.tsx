@@ -2,7 +2,7 @@ import { PlusOutlined } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
 import { useRequest } from '@umijs/max';
 import { Button, Card, List, Typography } from 'antd';
-import type { CardListItemDataType } from './data';
+import type { CardListItemDataType } from './data.d';
 import { queryFakeList } from './service';
 import useStyles from './style.style';
 const { Paragraph } = Typography;

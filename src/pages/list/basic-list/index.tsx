@@ -18,7 +18,7 @@ import dayjs from 'dayjs';
 import type { FC } from 'react';
 import React, { useState } from 'react';
 import OperationModal from './components/OperationModal';
-import type { BasicListItemDataType } from './data';
+import type { BasicListItemDataType } from './data.d';
 import { addFakeList, queryFakeList, removeFakeList, updateFakeList } from './service';
 import useStyles from './style.style';
 const RadioButton = Radio.Button;

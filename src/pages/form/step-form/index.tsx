@@ -9,7 +9,7 @@ import {
 import type { FormInstance } from 'antd';
 import { Alert, Button, Card, Descriptions, Divider, Result, Statistic } from 'antd';
 import React, { useRef, useState } from 'react';
-import type { StepDataType } from './data';
+import type { StepDataType } from './data.d';
 import useStyles from './style.style';
 const StepDescriptions: React.FC<{
   stepData: StepDataType;

@@ -1,5 +1,5 @@
 import { request } from '@umijs/max';
-import type { CardListItemDataType } from './data';
+import type { CardListItemDataType } from './data.d';
 
 export async function queryFakeList(params: {
   count: number;

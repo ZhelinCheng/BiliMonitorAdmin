@@ -1,5 +1,5 @@
 import { request } from '@umijs/max';
-import type { BasicListItemDataType } from './data';
+import type { BasicListItemDataType } from './data.d';
 
 type ParamsType = {
   count?: number;
