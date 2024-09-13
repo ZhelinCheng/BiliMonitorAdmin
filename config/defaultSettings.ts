@@ -1,5 +1,18 @@
 import { ProLayoutProps } from '@ant-design/pro-components';
 
+const baseCfg = {
+  navTheme: 'light',
+  colorPrimary: '#1890ff',
+  layout: 'top',
+  contentWidth: 'Fixed',
+  fixedHeader: true,
+  fixSiderbar: true,
+  pwa: true,
+  logo: 'https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg',
+  token: {},
+  splitMenus: false,
+};
+
 /**
  * @name
  */
@@ -25,4 +38,7 @@ const Settings: ProLayoutProps & {
   },
 };
 
-export default Settings;
+export default {
+  ...Settings,
+  ...baseCfg,
+};

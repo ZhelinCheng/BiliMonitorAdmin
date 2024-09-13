@@ -20,7 +20,7 @@ const passwordProgressMap: {
   poor: 'exception',
 };
 const Register: FC = () => {
-  const { styles } = useStyles();
+  const { styles } = useStyles() as any;
   const [count, setCount]: [number, any] = useState(0);
   const [open, setVisible]: [boolean, any] = useState(false);
   const [prefix, setPrefix]: [string, any] = useState('86');

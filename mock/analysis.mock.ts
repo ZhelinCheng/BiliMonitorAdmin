@@ -1,9 +1,8 @@
 import dayjs from 'dayjs';
 import type { Request, Response } from 'express';
-import type { AnalysisData, DataItem, RadarData } from './data';
 
 // mock data
-const visitData: DataItem[] = [];
+const visitData: any[] = [];
 const beginDay = new Date().getTime();
 
 const fakeY = [7, 5, 4, 2, 4, 7, 5, 6, 5, 9, 6, 3, 1, 5, 3, 6, 5];
@@ -166,7 +165,7 @@ const radarOriginData = [
   },
 ];
 
-const radarData: RadarData[] = [];
+const any: any[] = [];
 const radarTitleMap = {
   ref: '引用',
   koubei: '口碑',
@@ -177,7 +176,7 @@ const radarTitleMap = {
 radarOriginData.forEach((item) => {
   Object.keys(item).forEach((key) => {
     if (key !== 'name') {
-      radarData.push({
+      any.push({
         name: item.name,
         label: radarTitleMap[key as 'ref'],
         value: item[key as 'ref'],
@@ -186,7 +185,7 @@ radarOriginData.forEach((item) => {
   });
 });
 
-const getFakeChartData: AnalysisData = {
+const getFakeChartData: any = {
   visitData,
   visitData2,
   salesData,
@@ -196,7 +195,7 @@ const getFakeChartData: AnalysisData = {
   salesTypeData,
   salesTypeDataOnline,
   salesTypeDataOffline,
-  radarData,
+  any,
 };
 
 const fakeChartData = (_: Request, res: Response) => {
