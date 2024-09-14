@@ -56,8 +56,8 @@ export default [
     component: './list',
   },
   {
-    name: 'account',
-    icon: 'user',
+    name: 'setting',
+    icon: 'setting',
     path: '/settings',
     component: './settings',
   },

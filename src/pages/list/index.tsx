@@ -184,6 +184,19 @@ export const BasicList: FC = () => {
             }}
             extra={extraContent}
           >
+            <Button
+              type="dashed"
+              onClick={() => {
+                setVisible(true);
+              }}
+              style={{
+                width: '100%',
+                marginBottom: 8,
+              }}
+            >
+              <PlusOutlined />
+              添加
+            </Button>
             <List
               size="large"
               rowKey="id"
@@ -217,19 +230,7 @@ export const BasicList: FC = () => {
           </Card>
         </div>
       </PageContainer>
-      <Button
-        type="dashed"
-        onClick={() => {
-          setVisible(true);
-        }}
-        style={{
-          width: '100%',
-          marginBottom: 8,
-        }}
-      >
-        <PlusOutlined />
-        添加
-      </Button>
+
       <OperationModal
         done={done}
         open={open}

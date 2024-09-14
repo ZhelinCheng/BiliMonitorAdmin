@@ -29,7 +29,7 @@ const AccountView: React.FC = () => {
     <div className={styles.baseView}>
       <ProForm
         // layout="inline"
-        labelCol={{ span: 4 }}
+        labelCol={{ span: 10 }}
         wrapperCol={{ span: 14 }}
         layout="horizontal"
         onFinish={handleFinish}
