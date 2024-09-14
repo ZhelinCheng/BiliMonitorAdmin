@@ -1,51 +1,24 @@
-import { UploadOutlined } from '@ant-design/icons';
 import {
   ProForm,
-  ProFormDependency,
-  ProFormFieldSet,
+  ProFormCheckbox,
+  ProFormDigit,
   ProFormSelect,
+  ProFormSwitch,
   ProFormText,
-  ProFormTextArea,
 } from '@ant-design/pro-components';
 import { useRequest } from '@umijs/max';
-import { Button, Input, message, Upload } from 'antd';
+import { message } from 'antd';
 import React from 'react';
-import { queryCity, queryCurrent, queryProvince } from '../service';
+import { queryCurrent } from '../service';
 import useStyles from './index.style';
-
-const validatorPhone = (rule: any, value: string[], callback: (message?: string) => void) => {
-  if (!value[0]) {
-    callback('Please input your area code!');
-  }
-  if (!value[1]) {
-    callback('Please input your phone number!');
-  }
-  callback();
-};
 
 const BaseView: React.FC = () => {
   const { styles } = useStyles();
   // 头像组件 方便以后独立，增加裁剪之类的功能
-  const AvatarView = ({ avatar }: { avatar: string }) => (
-    <>
-      <div className={styles.avatar_title}>头像</div>
-      <div className={styles.avatar}>
-        <img src={avatar} alt="avatar" />
-      </div>
-      <Upload showUploadList={false}>
-        <div className={styles.button_view}>
-          <Button>
-            <UploadOutlined />
-            更换头像
-          </Button>
-        </div>
-      </Upload>
-    </>
-  );
-  const { data: currentUser, loading } = useRequest(() => {
+  const { data: currentUser } = useRequest(() => {
     return queryCurrent();
   });
-  const getAvatarURL = () => {
+  /*  const getAvatarURL = () => {
     if (currentUser) {
       if (currentUser.avatar) {
         return currentUser.avatar;
@@ -54,175 +27,108 @@ const BaseView: React.FC = () => {
       return url;
     }
     return '';
-  };
+  }; */
   const handleFinish = async () => {
     message.success('更新基本信息成功');
   };
   return (
     <div className={styles.baseView}>
-      {loading ? null : (
-        <>
-          <div className={styles.left}>
-            <ProForm
-              layout="vertical"
-              onFinish={handleFinish}
-              submitter={{
-                searchConfig: {
-                  submitText: '更新基本信息',
-                },
-                render: (_, dom) => dom[1],
-              }}
-              initialValues={{
-                ...currentUser,
-                phone: currentUser?.phone.split('-'),
-              }}
-              hideRequiredMark
-            >
-              <ProFormText
-                width="md"
-                name="email"
-                label="邮箱"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入您的邮箱!',
-                  },
-                ]}
-              />
-              <ProFormText
-                width="md"
-                name="name"
-                label="昵称"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入您的昵称!',
-                  },
-                ]}
-              />
-              <ProFormTextArea
-                name="profile"
-                label="个人简介"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入个人简介!',
-                  },
-                ]}
-                placeholder="个人简介"
-              />
-              <ProFormSelect
-                width="sm"
-                name="country"
-                label="国家/地区"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入您的国家或地区!',
-                  },
-                ]}
-                options={[
-                  {
-                    label: '中国',
-                    value: 'China',
-                  },
-                ]}
-              />
-
-              <ProForm.Group title="所在省市" size={8}>
-                <ProFormSelect
-                  rules={[
-                    {
-                      required: true,
-                      message: '请输入您的所在省!',
-                    },
-                  ]}
-                  width="sm"
-                  fieldProps={{
-                    labelInValue: true,
-                  }}
-                  name="province"
-                  className={styles.item}
-                  request={async () => {
-                    return queryProvince().then(({ data }) => {
-                      return data.map((item) => {
-                        return {
-                          label: item.name,
-                          value: item.id,
-                        };
-                      });
-                    });
-                  }}
-                />
-                <ProFormDependency name={['province']}>
-                  {({ province }) => {
-                    return (
-                      <ProFormSelect
-                        params={{
-                          key: province?.value,
-                        }}
-                        name="city"
-                        width="sm"
-                        rules={[
-                          {
-                            required: true,
-                            message: '请输入您的所在城市!',
-                          },
-                        ]}
-                        disabled={!province}
-                        className={styles.item}
-                        request={async () => {
-                          if (!province?.key) {
-                            return [];
-                          }
-                          return queryCity(province.key || '').then(({ data }) => {
-                            return data.map((item) => {
-                              return {
-                                label: item.name,
-                                value: item.id,
-                              };
-                            });
-                          });
-                        }}
-                      />
-                    );
-                  }}
-                </ProFormDependency>
-              </ProForm.Group>
-              <ProFormText
-                width="md"
-                name="address"
-                label="街道地址"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入您的街道地址!',
-                  },
-                ]}
-              />
-              <ProFormFieldSet
-                name="phone"
-                label="联系电话"
-                rules={[
-                  {
-                    required: true,
-                    message: '请输入您的联系电话!',
-                  },
-                  {
-                    validator: validatorPhone,
-                  },
-                ]}
-              >
-                <Input className={styles.area_code} />
-                <Input className={styles.phone_number} />
-              </ProFormFieldSet>
-            </ProForm>
-          </div>
-          <div className={styles.right}>
-            <AvatarView avatar={getAvatarURL()} />
-          </div>
-        </>
-      )}
+      <ProForm
+        // layout="inline"
+        labelCol={{ span: 4 }}
+        wrapperCol={{ span: 14 }}
+        layout="horizontal"
+        onFinish={handleFinish}
+        submitter={{
+          searchConfig: {
+            resetText: '重置',
+            submitText: '保存并更新',
+          },
+          render: (_, dom) => dom[1],
+        }}
+        initialValues={{
+          ...currentUser,
+          phone: currentUser?.phone.split('-'),
+        }}
+      >
+        <ProFormSwitch
+          colProps={{
+            span: 4,
+          }}
+          initialValue={true}
+          label="启动服务"
+          name="grid2"
+        />
+        <ProFormSwitch
+          colProps={{
+            span: 4,
+          }}
+          initialValue={true}
+          label="下载弹幕"
+          name="grid"
+        />
+        <ProFormDigit
+          name="num"
+          width="xs"
+          label="扫描间隔"
+          addonAfter="分钟"
+          initialValue={20}
+          max={60}
+          min={5}
+        />
+        <ProFormSelect
+          width="xs"
+          label="时间类型"
+          name="level"
+          tooltip="表示在视频信息中使用的时间类型"
+          valueEnum={{
+            1: '收藏时间',
+            2: '发布时间',
+            3: '下载时间',
+          }}
+        />
+        <ProFormText
+          width="sm"
+          label="视频目录"
+          name="level"
+          initialValue="{{bvid}}"
+          tooltip="表示在视频信息中使用的时间类型"
+          help="{{bvid}}视频BVID、{{title}}视频标题、{{upper_name}}UP主昵称、{{upper_mid}}UP主ID、{{YYYY}}年份、{{MM}}月份、{{DD}}日期"
+        />
+        <ProFormText
+          width="sm"
+          label="合集目录"
+          name="level"
+          help="除支持视频目录命名的全部参数外，还支持{{ptitle}}分P标题、{{index}}分P序号、{{cid}}分PID"
+        />
+        <ProFormText
+          width="sm"
+          label="视频资源"
+          name="sp"
+          initialValue="{{cid}}"
+          disabled
+          tooltip="未保证不冲突视频、封面等资源均用cid作为唯一标识"
+          help="{{cid}}分PID"
+        />
+        <ProFormCheckbox.Group name="xxxx" label="下载栏目" options={['12121', '33333']} />
+        <ProFormSelect
+          name="op1"
+          mode="tags"
+          tooltip="低于被选中的视频格式和质量将会被忽略"
+          help="为了更好的体验，本程序默认下载可下载的最高画质，暂时没有提供画质选择计划"
+          label="视频质量"
+          options={[
+            {
+              value: '1',
+              label: '3333',
+            },
+            {
+              value: '2',
+              label: '4333',
+            },
+          ]}
+        />
+      </ProForm>
     </div>
   );
 };

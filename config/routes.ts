@@ -63,7 +63,7 @@ export default [
   },
   {
     path: '/',
-    redirect: '/dashboard/analysis',
+    redirect: '/dashboard',
   },
   {
     component: '404',

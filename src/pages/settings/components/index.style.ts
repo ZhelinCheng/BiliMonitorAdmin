@@ -54,7 +54,7 @@ const useStyles = createStyles(({ token }) => {
     phone_number: {
       width: '214px',
     },
-    item: {}
+    item: {},
   };
 });
 
